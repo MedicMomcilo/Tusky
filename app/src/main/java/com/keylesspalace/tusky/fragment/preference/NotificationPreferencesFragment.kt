@@ -50,6 +50,10 @@ class NotificationPreferencesFragment : PreferenceFragmentCompat(), Preference.O
             mentionedPref.isChecked = activeAccount.notificationsMentioned
             mentionedPref.onPreferenceChangeListener = this
 
+            val allPref = requirePreference("notificationFilterAll") as SwitchPreferenceCompat
+            allPref.isChecked = activeAccount.notificationsAll
+            allPref.onPreferenceChangeListener = this
+
             val followedPref = requirePreference("notificationFilterFollows") as SwitchPreferenceCompat
             followedPref.isChecked = activeAccount.notificationsFollowed
             followedPref.onPreferenceChangeListener = this
@@ -94,6 +98,7 @@ class NotificationPreferencesFragment : PreferenceFragmentCompat(), Preference.O
                         NotificationHelper.disablePullNotifications()
                     }
                 }
+                "notificationFilterAll" -> activeAccount.notificationsAll = newValue as Boolean
                 "notificationFilterMentions" -> activeAccount.notificationsMentioned = newValue as Boolean
                 "notificationFilterFollows" -> activeAccount.notificationsFollowed = newValue as Boolean
                 "notificationFilterReblogs" -> activeAccount.notificationsReblogged = newValue as Boolean

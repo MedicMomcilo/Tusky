@@ -309,5 +309,11 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("ALTER TABLE `TootEntity` ADD COLUMN `poll` TEXT");
         }
     };
+    public static final Migration MIGRATION_19_20 = new Migration(19, 20) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE `AccountEntity` ADD COLUMN `notificationsAll` INTEGER NOT NULL DEFAULT 0");
+        }
+    };
 
 }

@@ -198,6 +198,7 @@
     <string name="pref_title_notification_alert_vibrate">Notify with vibration</string>
     <string name="pref_title_notification_alert_light">Notify with light</string>
     <string name="pref_title_notification_filters">Notify me when</string>
+    <string name="pref_title_notification_filter_all">any toot is posted</string>
     <string name="pref_title_notification_filter_mentions">mentioned</string>
     <string name="pref_title_notification_filter_follows">followed</string>
     <string name="pref_title_notification_filter_reblogs">my posts are boosted</string>

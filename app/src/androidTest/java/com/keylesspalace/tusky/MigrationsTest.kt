@@ -40,12 +40,12 @@ class MigrationsTest {
 
         db.execSQL("INSERT OR REPLACE INTO `AccountEntity`(`id`,`domain`,`accessToken`,`isActive`," +
                 "`accountId`,`username`,`displayName`,`profilePictureUrl`,`notificationsEnabled`," +
-                "`notificationsMentioned`,`notificationsFollowed`,`notificationsReblogged`," +
+                "`notificationsAll`,`notificationsMentioned`,`notificationsFollowed`,`notificationsReblogged`," +
                 "`notificationsFavorited`,`notificationSound`,`notificationVibration`," +
                 "`notificationLight`,`lastNotificationId`,`activeNotifications`,`emojis`," +
                 "`defaultPostPrivacy`,`defaultMediaSensitivity`,`alwaysShowSensitiveMedia`," +
                 "`mediaPreviewEnabled`) " +
-                "VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                "VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 values)
 
         db.close()
