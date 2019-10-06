@@ -70,6 +70,7 @@ class ComposeActivityTest {
             displayName = "Display Name",
             profilePictureUrl = "",
             notificationsEnabled = true,
+            notificationsAll = true,
             notificationsMentioned = true,
             notificationsFollowed = true,
             notificationsReblogged = true,

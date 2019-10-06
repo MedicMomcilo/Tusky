@@ -249,6 +249,8 @@
     <string name="status_text_size_large">Large</string>
     <string name="status_text_size_largest">Largest</string>
 
+    <string name="notification_all_name">All Toots</string>
+    <string name="notification_all_description">Notifications for all toots</string>
     <string name="notification_mention_name">New Mentions</string>
     <string name="notification_mention_descriptions">Notifications about new mentions</string>
     <string name="notification_follow_name">New Followers</string>
@@ -261,6 +263,7 @@
     <string name="notification_poll_description">Notifications about polls that have ended</string>
 
 
+    <string name="notification_all_format">%s just tooted</string>
     <string name="notification_mention_format">%s mentioned you</string>
     <string name="notification_summary_large">%1$s, %2$s, %3$s and %4$d others</string>
     <string name="notification_summary_medium">%1$s, %2$s, and %3$s</string>

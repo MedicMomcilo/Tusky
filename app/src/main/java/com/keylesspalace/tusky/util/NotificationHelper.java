@@ -109,6 +109,7 @@ public class NotificationHelper {
     /**
      * notification channels used on Android O+
      **/
+    public static final String CHANNEL_ALL = "CHANNEL_ALL";
     public static final String CHANNEL_MENTION = "CHANNEL_MENTION";
     public static final String CHANNEL_FOLLOW = "CHANNEL_FOLLOW";
     public static final String CHANNEL_BOOST = "CHANNEL_BOOST";
@@ -343,6 +344,7 @@ public class NotificationHelper {
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
             String[] channelIds = new String[]{
+                    CHANNEL_ALL + account.getIdentifier(),
                     CHANNEL_MENTION + account.getIdentifier(),
                     CHANNEL_FOLLOW + account.getIdentifier(),
                     CHANNEL_BOOST + account.getIdentifier(),
@@ -350,6 +352,7 @@ public class NotificationHelper {
                     CHANNEL_POLL + account.getIdentifier(),
             };
             int[] channelNames = {
+                    R.string.notification_all_name,
                     R.string.notification_mention_name,
                     R.string.notification_follow_name,
                     R.string.notification_boost_name,
@@ -357,6 +360,7 @@ public class NotificationHelper {
                     R.string.notification_poll_name
             };
             int[] channelDescriptions = {
+                    R.string.notification_all_description,
                     R.string.notification_mention_descriptions,
                     R.string.notification_follow_description,
                     R.string.notification_boost_description,
@@ -410,6 +414,7 @@ public class NotificationHelper {
 
             // used until Tusky 1.4
             //noinspection ConstantConditions
+            notificationManager.deleteNotificationChannel(CHANNEL_ALL);
             notificationManager.deleteNotificationChannel(CHANNEL_MENTION);
             notificationManager.deleteNotificationChannel(CHANNEL_FAVOURITE);
             notificationManager.deleteNotificationChannel(CHANNEL_BOOST);
@@ -501,6 +506,8 @@ public class NotificationHelper {
         }
 
         switch (notification.getType()) {
+            case ALL:
+                return account.getNotificationsAll();
             case MENTION:
                 return account.getNotificationsMentioned();
             case FOLLOW:
@@ -518,6 +525,8 @@ public class NotificationHelper {
 
     private static @Nullable String getChannelId(AccountEntity account, Notification notification) {
         switch (notification.getType()) {
+            case ALL:
+                return CHANNEL_ALL + account.getIdentifier();
             case MENTION:
                 return CHANNEL_MENTION + account.getIdentifier();
             case FOLLOW:
@@ -585,6 +594,9 @@ public class NotificationHelper {
     private static String titleForType(Context context, Notification notification, BidiFormatter bidiFormatter, AccountEntity account) {
         String accountName = bidiFormatter.unicodeWrap(notification.getAccount().getName());
         switch (notification.getType()) {
+            case ALL:
+                return String.format(context.getString(R.string.notification_all_format),
+                        accountName);
             case MENTION:
                 return String.format(context.getString(R.string.notification_mention_format),
                         accountName);
@@ -611,6 +623,7 @@ public class NotificationHelper {
         switch (notification.getType()) {
             case FOLLOW:
                 return "@" + notification.getAccount().getUsername();
+            case ALL:
             case MENTION:
             case FAVOURITE:
             case REBLOG:
