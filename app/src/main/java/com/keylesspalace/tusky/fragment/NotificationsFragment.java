@@ -702,6 +702,8 @@ public class NotificationsFragment extends SFragment implements
 
     private String getNotificationText(Notification.Type type) {
         switch (type) {
+            case ALL:
+                return getString(R.string.notification_all_name);
             case MENTION:
                 return getString(R.string.notification_mention_name);
             case FAVOURITE:

@@ -27,6 +27,7 @@ data class Notification(
     @JsonAdapter(NotificationTypeAdapter::class)
     enum class Type(val presentation: String) {
         UNKNOWN("unknown"),
+        ALL("all"),
         MENTION("mention"),
         REBLOG("reblog"),
         FAVOURITE("favourite"),
@@ -43,7 +44,7 @@ data class Notification(
                 }
                 return UNKNOWN
             }
-            val asList = listOf(MENTION, REBLOG, FAVOURITE, FOLLOW, POLL)
+            val asList = listOf(ALL, MENTION, REBLOG, FAVOURITE, FOLLOW, POLL)
         }
 
         override fun toString(): String {
